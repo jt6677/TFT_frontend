@@ -1,15 +1,35 @@
-# Vite + React + Typescript + Eslint + Airbnb eslint rules + Airbnb Typescript rules + Prettier + env variable import + Absolute Import Path
+## LOL Teamfight Tactics Tutorial Maker
 
-!yes, this many setup files.
+**Description**:
+The "LOL Teamfight Tactics Tutorial Maker" is a digital chessboard designed to simulate in-game tactics observed in Teamfight Tactics. This allows users to experiment and learn about the different tactics and synergies without diving into the actual game. The platform is built for educational purposes, helping new and experienced players hone their strategies.
 
-==============================================
+**Key Features**:
 
-# env variable import:
+1. **Champ Selection**: Users can select from a variety of champions available in the game.
+2. **Core Champ Selection**: Players can highlight certain champions as core, emphasizing their importance in a particular strategy.
+3. **Hex Tech Selection**: Allows users to experiment with different hex tech synergies.
+4. **Equipment Selection & Priority**: Users can assign equipment to champions and decide on the priority for those items.
+5. **Champ Equipment Pairing**: Determine which equipment goes best with which champion.
+6. **Positioning**: Arrange champions on the chessboard to test out the best placement.
+7. **Champ Leveling**: Upgrade champions from level 1 to 3, simulating their in-game progress.
+8. **Synergies Display**: As champions are placed on the board, users can see potential synergies light up.
 
-1. You need to add type in env.d.ts like "readonly VITE_ANYTHING: string"
-2. variable MUST start with VITE\_
-3. usage of env variable in your app, no need to import, just use it as a global variable: console.log(import.meta.env.VITE_API_URL)
+**Technical Specifications**:
 
-==============================================
+- React
+- react-dnd
+- framer-motion
+- react-markdown
+- zustand
+- vite
 
-#Absolute Import Path
+**Install && Run**:
+install: npm i
+run: npm run dev
+
+**Disclaimer**:
+This project is for educational purposes only and is not intended for commercial use. All rights and assets associated with Teamfight Tactics belong to their respective owners.
+
+---
+
+This refined description offers a comprehensive overview of the project while maintaining clarity and organization. It emphasizes both the functionalities and the technologies used in a coherent manner.
