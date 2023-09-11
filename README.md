@@ -1,7 +1,7 @@
-## LOL Teamfight Tactics Tutorial Maker
+## LOL Teamfight Tactics Tutorial Editor
 
 **Description**:
-The "LOL Teamfight Tactics Tutorial Maker" is a digital chessboard designed to simulate in-game tactics observed in Teamfight Tactics. This allows users to experiment and learn about the different tactics and synergies without diving into the actual game. The platform is built for educational purposes, helping new and experienced players hone their strategies.
+The "LOL Teamfight Tactics Tutorial Editor" is a digital chessboard designed to simulate in-game tactics observed in Teamfight Tactics. This allows users to experiment and learn about the different tactics and synergies without diving into the actual game. The platform is built for educational purposes, helping new and experienced players hone their strategies.
 
 **Key Features**:
 
