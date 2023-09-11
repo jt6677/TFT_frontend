@@ -1,0 +1,111 @@
+module.exports = {
+  root: true,
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    // tsconfigRootDir: __dirname,
+    project: './tsconfig.eslint.json',
+  },
+  parser: '@typescript-eslint/parser',
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  env: {
+    browser: true,
+    amd: true,
+    node: true,
+  },
+  extends: [
+    'airbnb',
+    'airbnb-typescript',
+    'plugin:prettier/recommended', // Make sure this is always the last element in the array.
+  ],
+  plugins: ['simple-import-sort', 'unused-imports', 'prettier'],
+  rules: {
+    'import/no-named-default': 'off',
+    'no-nested-ternary': 'off',
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+    'react/require-default-props': 'off',
+    'import/extensions': 'off',
+    'no-underscore-dangle': 'off',
+    'jsx-a11y/interactive-supports-focus': 'off',
+    'max-classes-per-file': 'off',
+    'no-plusplus': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn'],
+    'no-prototype-builtins': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
+    'react/no-array-index-key': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/button-has-type': 'off',
+    // unused-imports
+    // 'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
+    // 'unused-imports/no-unused-imports': 'error',
+    // 'unused-imports/no-unused-vars': [
+    //   'warn',
+    //   {
+    //     vars: 'all',
+    //     varsIgnorePattern: '^_',
+    //     args: 'after-used',
+    //     argsIgnorePattern: '^_',
+    //   },
+    // ],
+    // 'jsx-a11y/anchor-is-valid': [
+    //   'warn',
+    //   {
+    //     components: ['Link'],
+    //     specialLink: ['hrefLeft', 'hrefRight'],
+    //     aspects: ['noHref', 'invalidHref', 'preferButton'],
+    //   },
+    // ],
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    // '@typescript-eslint/dot-notation': 'off',
+    // 'react/react-in-jsx-scope': 'off',
+    // 'jsx-a11y/accessible-emoji': 'off',
+    // 'react/prop-types': 'off',
+    // '@typescript-eslint/explicit-function-return-type': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    'react/no-unescaped-entities': 'off',
+    'jsx-a11y/no-autofocus': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': [
+      'warn',
+      {
+        ignoreTypeValueShadow: true,
+        ignoreFunctionTypeParameterNameValueShadow: true,
+      },
+    ],
+
+    'import/no-extraneous-dependencies': 'off',
+    'no-console': 'off',
+    'import/prefer-default-export': 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'consistent-return': 'off',
+    // 'jsx-a11y/anchor-is-valid': [
+    //   'error',
+    //   {
+    //     components: ['Link'],
+    //     specialLink: ['hrefLeft', 'hrefRight'],
+    //     aspects: ['invalidHref', 'preferButton'],
+    //   },
+    // ],
+    'no-restricted-syntax': 'off',
+    'guard-for-in': 'off',
+    '@typescript-eslint/lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterOverload: true },
+      // { exceptAfterOverload: true, exceptAfterSingleLine: true },
+    ],
+  },
+}

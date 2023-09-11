@@ -1,0 +1,20 @@
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.format": true
+  },
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#d67f69",
+    "titleBar.activeBackground": "#cb5d41",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.border": "#cb5d41",
+    "titleBar.inactiveBackground": "#cb5d4199",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "sash.hoverBorder": "#d67f69",
+    "commandCenter.border": "#e7e7e799"
+  },
+  "peacock.color": "#cb5d41"
+}

@@ -1,0 +1,13 @@
+.circleci/
+zarf/
+.dockerignore
+.gitgnore
+LICENSE
+Makefile
+README.md
+pgdata/
+.vscode/
+keyfile.json
+dist/
+build/
+tmp/

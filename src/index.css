@@ -1,0 +1,1166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Box sizing rules */
+
+@layer base {
+  .center {
+    /* ... */
+    display: grid;
+    place-content: center;
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #66689f transparent;
+  box-sizing: border-box;
+  outline: none !important;
+}
+html,
+body {
+  outline: none;
+  margin: 0;
+  /* height: 100vh; */
+  /* background-color: #161c2c; */
+  max-width: 2000px;
+  background-color: hsl(240, 25%, 15%);
+  color: #ededff;
+  user-select: none;
+  --neon-blue: #8bdce5;
+  --medium-blue: #2cb1bf;
+  --dark-blue: #011c40;
+  --bright-gold: hsl(45, 100%, 72%);
+}
+@font-face {
+  font-family: 'dotFont';
+  src: url('./assets/k8x12-2.ttf');
+}
+@font-face {
+  font-family: 'kidFont';
+  src: url('./assets/crayon.ttf');
+}
+.dotFont {
+  font-family: 'dotFont';
+}
+.kidFont {
+  font-family: 'kidFont';
+}
+
+.doubleCross {
+  position: relative;
+  display: inline-block;
+}
+.doubleCross::before,
+.doubleCross::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.doubleCross::before {
+  border-bottom: 2px dotted red;
+  -webkit-transform: skewY(-10deg);
+  transform: skewY(-25deg);
+  /* transform: rotate(3deg); */
+}
+.doubleCross::after {
+  border-bottom: 2px dotted red;
+  -webkit-transform: skewY(10deg);
+  transform: skewY(25deg);
+  /* transform: rotate(3deg); */
+}
+
+.fadeoutBorder {
+  background: linear-gradient(hsl(240, 25%, 35%), hsl(240, 25%, 35%))
+      padding-box,
+    linear-gradient(
+        to bottom,
+        hsl(240, 25%, 45%),
+        hsl(240, 25%, 40%),
+        hsl(240, 25%, 36%),
+        hsl(240, 25%, 35%)
+      )
+      border-box;
+  /* border-radius: 10em; */
+  border: 3px solid transparent;
+}
+.box {
+  position: absolute;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate3d(-50%, -50%, 0); */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* width: 100%; */
+  /* max-width: 1000px; */
+  padding: 5px;
+  border: 2px solid var(--bright-gold);
+}
+.box:before,
+.box:after {
+  content: '•';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: var(--bright-gold);
+  border: 2px solid var(--bright-gold);
+  line-height: 12px;
+  top: 5px;
+  text-align: center;
+}
+.box:before {
+  left: 5px;
+}
+.box:after {
+  right: 5px;
+}
+.box .box-inner {
+  position: relative;
+  border: 2px solid var(--bright-gold);
+  padding: 15px;
+}
+.box .box-inner:before,
+.box .box-inner:after {
+  content: '•';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: var(--bright-gold);
+  border: 2px solid var(--bright-gold);
+  line-height: 12px;
+  bottom: -2px;
+  text-align: center;
+}
+.box .box-inner:before {
+  left: -2px;
+}
+.box .box-inner:after {
+  right: -2px;
+}
+
+/* second border */
+.wrapper {
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro {
+  margin: 20px;
+  text-align: center;
+  border: 8px double var(--neon-blue);
+  padding: 40px 20px;
+}
+
+.intro h1,
+.intro p {
+  color: #8bdce5;
+}
+/*
+Bootstrap (5) integration for btn-deluxe by hnldesign - https://www.hnldesign.nl
+v 3.1.0
+fixes: improved BS integration
+ */
+/*
+btn-deluxe by hnldesign - https://www.hnldesign.nl
+button CSS based on work by Josh Comeau - https://www.joshwcomeau.com/animation/3d-button/
+v 3.2.1
+new: gradient style
+ */
+/* if btn deluxe is included in a Bootstrap project, but not the required css (btn-deluxe.bs.css),
+make sure btn-deluxe's spans don't mess up existing Bootstrap buttons
+ */
+.btn > span.btn-deluxe-front,
+.btn > span.btn-deluxe-edge {
+  display: contents;
+}
+
+/* foundation*/
+.btn-deluxe,
+.btn-deluxe-switchable {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 334deg;
+  --but-deluxe-sat: 100%;
+  --but-deluxe-bri: 47%;
+  --but-deluxe-alt-hue: 369deg;
+  --but-deluxe-alt-sat: 80%;
+  --but-deluxe-alt-bri: 61.1%;
+  --but-deluxe-shade-angle: 15deg;
+  --btn-deluxe-trans-duration: 250ms;
+  --btn-deluxe-round: 10px;
+  --btn-deluxe-up: 5px;
+  --btn-deluxe-shadowsize: 3px;
+  position: relative;
+  padding: 3px 0 var(--btn-deluxe-up) 0;
+  border-radius: var(--btn-deluxe-round);
+  outline-offset: 4px;
+  cursor: pointer;
+  border: none;
+  background: transparent !important;
+  overflow: hidden;
+  transform: translateZ(0);
+  /* fixes radius overflow bug @ ios safari: https://stackoverflow.com/questions/49066011/overflow-hidden-with-border-radius-not-working-on-safari */
+  transition-property: filter, box-shadow;
+  transition-duration: var(--btn-deluxe-trans-duration),
+    var(--btn-deluxe-trans-duration);
+  transition-timing-function: ease, ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none;
+  /* disable the IOS popup when long-press on a link */
+  /* use negative spread to prevent shadow showing from under the button's top-side */
+  box-shadow: 0 var(--btn-deluxe-shadowsize) 4px -1px hsl(var(
+          --but-deluxe-hue,
+          334deg
+        )
+        var(--but-deluxe-sat, 100%) calc(var(--but-deluxe-bri, 47%) * 0.4) / 22%);
+  /* inner spans */
+  /* states */
+  /* hover-enabled-devices */
+}
+.btn-deluxe > .btn-deluxe-edge,
+.btn-deluxe-switchable > .btn-deluxe-edge {
+  box-sizing: border-box;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--btn-deluxe-round);
+  background: linear-gradient(
+    to left,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 2)
+      )
+      0%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 1.5)
+      )
+      8%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 1.5)
+      )
+      92%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 2)
+      )
+      100%
+  );
+  margin-top: calc(var(--btn-deluxe-up) + 2px);
+}
+.btn-deluxe > .btn-deluxe-front,
+.btn-deluxe-switchable > .btn-deluxe-front {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 10px 30px;
+  border-radius: var(--btn-deluxe-round);
+  color: var(--but-deluxe-txt);
+  background: hsl(
+    var(--but-deluxe-hue),
+    var(--but-deluxe-sat),
+    var(--but-deluxe-bri)
+  );
+  background-image: linear-gradient(
+    var(--but-deluxe-shade-angle),
+    hsl(var(--but-deluxe-hue), var(--but-deluxe-sat), var(--but-deluxe-bri)) 0%,
+    hsl(
+        var(--but-deluxe-alt-hue),
+        var(--but-deluxe-alt-sat),
+        var(--but-deluxe-alt-bri)
+      )
+      100%
+  );
+  will-change: transform;
+  transition-timing-function: cubic-bezier(0.3, 0.7, 0.4, 1);
+  transition: transform var(--btn-deluxe-trans-duration)
+    cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+@media all and (hover: hover) {
+  .btn-deluxe:hover,
+  .btn-deluxe-switchable:hover {
+    background: transparent;
+    filter: brightness(105%);
+    --btn-deluxe-trans-duration: 250ms;
+    --btn-deluxe-shadowsize: 5px;
+  }
+  .btn-deluxe > .btn-deluxe-front,
+  .btn-deluxe-switchable > .btn-deluxe-front {
+    transition: transform var(--btn-deluxe-trans-duration);
+  }
+  .btn-deluxe:hover > .btn-deluxe-front,
+  .btn-deluxe-switchable:hover > .btn-deluxe-front {
+    transform: translateY(-3px);
+  }
+}
+@media not all and (hover: hover) {
+  .btn-deluxe,
+  .btn-deluxe-switchable {
+    /* on non-hover (mobile/touch) devices, there is no 'lift' when hovering the button, so the depression
+    when pressing the button is relatively shorter. To achieve the same 'feel' and satisfaction of pressing it,
+    we'll set the height of a button on a non-hover device slightly higher (unless $btn-deluxe-hover is lowered) */
+    --btn-deluxe-up: calc(min(3px, 2px) + 5px);
+  }
+}
+.btn-deluxe:focus:not(:focus-visible),
+.btn-deluxe-switchable:focus:not(:focus-visible) {
+  box-shadow: 0 var(--btn-deluxe-shadowsize) 4px -1px hsl(var(
+          --but-deluxe-hue,
+          334deg
+        )
+        var(--but-deluxe-sat, 100%) calc(var(--but-deluxe-bri, 47%) * 0.4) / 22%);
+}
+.btn-deluxe:active,
+.btn-deluxe-switchable:active {
+  --btn-deluxe-shadowblur: 1px;
+  --btn-deluxe-shadowsize: 2px;
+}
+.btn-deluxe:active > .btn-deluxe-front,
+.btn-deluxe-switchable:active > .btn-deluxe-front {
+  transform: translateY(calc(var(--btn-deluxe-up) - 2px));
+  --btn-deluxe-trans-duration: 20ms;
+}
+.btn-deluxe:focus:not(:focus-visible),
+.btn-deluxe-switchable:focus:not(:focus-visible) {
+  background: transparent;
+  outline: none;
+  border: 0 none;
+}
+.btn-deluxe.disabled > .btn-deluxe-front,
+.disabled.btn-deluxe-switchable > .btn-deluxe-front,
+.btn-deluxe:disabled > .btn-deluxe-front,
+.btn-deluxe-switchable:disabled > .btn-deluxe-front,
+.btn-deluxe[disabled] > .btn-deluxe-front,
+[disabled].btn-deluxe-switchable > .btn-deluxe-front {
+  /* disabled */
+  transform: translateY(3px);
+}
+
+/* switchable - stays depressed */
+.btn-deluxe-switchable.active,
+.btn-deluxe-switchable.active:focus,
+.btn-deluxe-switchable.active:active,
+.btn-deluxe-switchable:active {
+  box-shadow: none;
+}
+
+.btn-deluxe-switchable.active > .btn-deluxe-front {
+  transform: translateY(calc(var(--btn-deluxe-up) + 2px));
+}
+
+.btn-deluxe-switchable:active > .btn-deluxe-front {
+  --btn-deluxe-trans-duration: 60ms;
+  transform: translateY(calc(var(--btn-deluxe-up) + 2px + max(3px, 3px)));
+}
+
+.btn-deluxe-switchable.active:focus > .btn-deluxe-front,
+.btn-deluxe-switchable:active > .btn-deluxe-front,
+.btn-deluxe-switchable.active > .btn-deluxe-front {
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-deluxe-switchable.active:focus > .btn-deluxe-edge,
+.btn-deluxe-switchable:active > .btn-deluxe-edge,
+.btn-deluxe-switchable.active > .btn-deluxe-edge {
+  --but-deluxe-bri: 40%;
+}
+
+.btn-primary.btn-deluxe,
+.btn-primary.btn-deluxe-switchable,
+.btn-outline-primary.btn-deluxe,
+.btn-outline-primary.btn-deluxe-switchable {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 215.75deg;
+  --but-deluxe-sat: 98.3606557377%;
+  --but-deluxe-bri: 52.1568627451%;
+  --but-deluxe-alt-hue: 215.75deg;
+  --but-deluxe-alt-sat: 98.3606557377%;
+  --but-deluxe-alt-bri: 59.9803921569%;
+}
+.btn-primary.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-primary.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-primary.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-primary.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-primary.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-primary.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-primary.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-primary.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-primary.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-primary.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-primary.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-primary.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-primary.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-primary.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-primary.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-primary.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 215.625deg;
+  --but-deluxe-sat: 90.5660377358%;
+  --but-deluxe-bri: 41.568627451%;
+  --but-deluxe-alt-hue: 215.625deg;
+  --but-deluxe-alt-sat: 90.5660377358%;
+  --but-deluxe-alt-bri: 47.8039215686%;
+}
+
+.btn-secondary.btn-deluxe,
+.btn-secondary.btn-deluxe-switchable,
+.btn-outline-secondary.btn-deluxe,
+.btn-outline-secondary.btn-deluxe-switchable {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 208.2352941176deg;
+  --but-deluxe-sat: 7.2961373391%;
+  --but-deluxe-bri: 45.6862745098%;
+  --but-deluxe-alt-hue: 208.2352941176deg;
+  --but-deluxe-alt-sat: 7.2961373391%;
+  --but-deluxe-alt-bri: 52.5392156863%;
+}
+.btn-secondary.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-secondary.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-secondary.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-secondary.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-secondary.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-secondary.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-secondary.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-secondary.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-secondary.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-secondary.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-secondary.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-secondary.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-secondary.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-secondary.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-secondary.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-secondary.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 205.7142857143deg;
+  --but-deluxe-sat: 7.5268817204%;
+  --but-deluxe-bri: 36.4705882353%;
+  --but-deluxe-alt-hue: 205.7142857143deg;
+  --but-deluxe-alt-sat: 7.5268817204%;
+  --but-deluxe-alt-bri: 41.9411764706%;
+}
+
+.btn-success.btn-deluxe,
+.btn-success.btn-deluxe-switchable,
+.btn-outline-success.btn-deluxe,
+.btn-outline-success.btn-deluxe-switchable {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 152.1818181818deg;
+  --but-deluxe-sat: 68.75%;
+  --but-deluxe-bri: 31.3725490196%;
+  --but-deluxe-alt-hue: 152.1818181818deg;
+  --but-deluxe-alt-sat: 68.75%;
+  --but-deluxe-alt-bri: 36.0784313725%;
+}
+.btn-success.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-success.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-success.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-success.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-success.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-success.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-success.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-success.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-success.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-success.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-success.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-success.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-success.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-success.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-success.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-success.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 152.0454545455deg;
+  --but-deluxe-sat: 68.75%;
+  --but-deluxe-bri: 25.0980392157%;
+  --but-deluxe-alt-hue: 152.0454545455deg;
+  --but-deluxe-alt-sat: 68.75%;
+  --but-deluxe-alt-bri: 28.862745098%;
+}
+
+.btn-info.btn-deluxe,
+.btn-info.btn-deluxe-switchable,
+.btn-outline-info.btn-deluxe,
+.btn-outline-info.btn-deluxe-switchable {
+  --but-deluxe-txt: #000;
+  --but-deluxe-hue: 190.0440528634deg;
+  --but-deluxe-sat: 89.7233201581%;
+  --but-deluxe-bri: 49.6078431373%;
+  --but-deluxe-alt-hue: 190.0440528634deg;
+  --but-deluxe-alt-sat: 89.7233201581%;
+  --but-deluxe-alt-bri: 57.0490196078%;
+}
+.btn-info.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-info.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-info.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-info.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-info.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-info.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-info.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-info.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-info.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-info.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-info.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-info.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-info.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-info.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-info.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-info.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #000;
+  --but-deluxe-hue: 189.8901098901deg;
+  --but-deluxe-sat: 88.3495145631%;
+  --but-deluxe-bri: 59.6078431373%;
+  --but-deluxe-alt-hue: 189.8901098901deg;
+  --but-deluxe-alt-sat: 88.3495145631%;
+  --but-deluxe-alt-bri: 68.5490196078%;
+}
+
+.btn-warning.btn-deluxe,
+.btn-warning.btn-deluxe-switchable,
+.btn-outline-warning.btn-deluxe,
+.btn-outline-warning.btn-deluxe-switchable {
+  --but-deluxe-txt: #000;
+  --but-deluxe-hue: 45deg;
+  --but-deluxe-sat: 100%;
+  --but-deluxe-bri: 51.3725490196%;
+  --but-deluxe-alt-hue: 45deg;
+  --but-deluxe-alt-sat: 100%;
+  --but-deluxe-alt-bri: 59.0784313725%;
+}
+.btn-warning.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-warning.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-warning.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-warning.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-warning.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-warning.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-warning.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-warning.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-warning.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-warning.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-warning.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-warning.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-warning.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-warning.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-warning.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-warning.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #000;
+  --but-deluxe-hue: 44.8484848485deg;
+  --but-deluxe-sat: 100%;
+  --but-deluxe-bri: 61.1764705882%;
+  --but-deluxe-alt-hue: 44.8484848485deg;
+  --but-deluxe-alt-sat: 100%;
+  --but-deluxe-alt-bri: 70.3529411765%;
+}
+
+.btn-danger.btn-deluxe,
+.btn-danger.btn-deluxe-switchable,
+.btn-outline-danger.btn-deluxe,
+.btn-outline-danger.btn-deluxe-switchable {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 354.251497006deg;
+  --but-deluxe-sat: 70.4641350211%;
+  --but-deluxe-bri: 53.5294117647%;
+  --but-deluxe-alt-hue: 354.251497006deg;
+  --but-deluxe-alt-sat: 70.4641350211%;
+  --but-deluxe-alt-bri: 61.5588235294%;
+}
+.btn-danger.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-danger.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-danger.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-danger.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-danger.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-danger.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-danger.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-danger.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-danger.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-danger.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-danger.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-danger.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-danger.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-danger.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-danger.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-danger.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 354.1791044776deg;
+  --but-deluxe-sat: 61.4678899083%;
+  --but-deluxe-bri: 42.7450980392%;
+  --but-deluxe-alt-hue: 354.1791044776deg;
+  --but-deluxe-alt-sat: 61.4678899083%;
+  --but-deluxe-alt-bri: 49.1568627451%;
+}
+
+.btn-light.btn-deluxe,
+.btn-light.btn-deluxe-switchable,
+.btn-outline-light.btn-deluxe,
+.btn-outline-light.btn-deluxe-switchable {
+  --but-deluxe-txt: #000;
+  --but-deluxe-hue: 210deg;
+  --but-deluxe-sat: 16.6666666667%;
+  --but-deluxe-bri: 97.6470588235%;
+  --but-deluxe-alt-hue: 210deg;
+  --but-deluxe-alt-sat: 16.6666666667%;
+  --but-deluxe-alt-bri: 112.2941176471%;
+}
+.btn-light.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-light.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-light.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-light.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-light.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-light.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-light.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-light.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-light.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-light.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-light.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-light.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-light.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-light.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-light.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-light.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #000;
+  --but-deluxe-hue: 210deg;
+  --but-deluxe-sat: 20%;
+  --but-deluxe-bri: 98.0392156863%;
+  --but-deluxe-alt-hue: 210deg;
+  --but-deluxe-alt-sat: 20%;
+  --but-deluxe-alt-bri: 112.7450980392%;
+}
+
+.btn-dark.btn-deluxe,
+.btn-dark.btn-deluxe-switchable,
+.btn-outline-dark.btn-deluxe,
+.btn-outline-dark.btn-deluxe-switchable {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 210deg;
+  --but-deluxe-sat: 10.8108108108%;
+  --but-deluxe-bri: 14.5098039216%;
+  --but-deluxe-alt-hue: 210deg;
+  --but-deluxe-alt-sat: 10.8108108108%;
+  --but-deluxe-alt-bri: 16.6862745098%;
+}
+.btn-dark.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-dark.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-dark.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-dark.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-dark.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-dark.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-dark.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-dark.btn-deluxe-switchable:not([class*='btn-outline-']):hover,
+.btn-outline-dark.btn-deluxe:not([class*='btn-outline-']):active,
+.btn-outline-dark.btn-deluxe-switchable:not([class*='btn-outline-']):active,
+.btn-outline-dark.btn-deluxe:not([class*='btn-outline-']).active,
+.btn-outline-dark.btn-deluxe-switchable:not([class*='btn-outline-']).active,
+.btn-outline-dark.btn-deluxe:not([class*='btn-outline-']):focus,
+.btn-outline-dark.btn-deluxe-switchable:not([class*='btn-outline-']):focus,
+.btn-outline-dark.btn-deluxe:not([class*='btn-outline-']):hover,
+.btn-outline-dark.btn-deluxe-switchable:not([class*='btn-outline-']):hover {
+  --but-deluxe-txt: #fff;
+  --but-deluxe-hue: 205.7142857143deg;
+  --but-deluxe-sat: 11.8644067797%;
+  --but-deluxe-bri: 11.568627451%;
+  --but-deluxe-alt-hue: 205.7142857143deg;
+  --but-deluxe-alt-sat: 11.8644067797%;
+  --but-deluxe-alt-bri: 13.3039215686%;
+}
+
+.btn.btn-deluxe,
+.btn.btn-deluxe-switchable {
+  color: #212529;
+  --btn-deluxe-round: 0.25rem;
+  --but-deluxe-shade-angle: 5deg;
+}
+.btn.btn-deluxe > span,
+.btn.btn-deluxe-switchable > span {
+  /* restore span visibility */
+  display: inline-block;
+}
+.btn.btn-deluxe > .btn-deluxe-front,
+.btn.btn-deluxe-switchable > .btn-deluxe-front {
+  padding: 0.375rem 0.75rem;
+}
+.btn.btn-deluxe.btn-lg > .btn-deluxe-front,
+.btn.btn-lg.btn-deluxe-switchable > .btn-deluxe-front {
+  padding: 0.5rem 1rem;
+}
+.btn.btn-deluxe.btn-sm > .btn-deluxe-front,
+.btn.btn-sm.btn-deluxe-switchable > .btn-deluxe-front {
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-group
+  > .btn-deluxe:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-front,
+.btn-group
+  > .btn-deluxe-switchable:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-front,
+.btn-group
+  > .btn-deluxe:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-edge,
+.btn-group
+  > .btn-deluxe-switchable:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-edge,
+.btn-group > .btn-group:not(:last-child) > .btn-deluxe > .btn-deluxe-front,
+.btn-group
+  > .btn-group:not(:last-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-front,
+.btn-group > .btn-group:not(:last-child) > .btn-deluxe > .btn-deluxe-edge,
+.btn-group
+  > .btn-group:not(:last-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-edge {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-group > .btn-deluxe:nth-child(n + 3) > .btn-deluxe-front,
+.btn-group > .btn-deluxe-switchable:nth-child(n + 3) > .btn-deluxe-front,
+.btn-group > .btn-deluxe:nth-child(n + 3) > .btn-deluxe-edge,
+.btn-group > .btn-deluxe-switchable:nth-child(n + 3) > .btn-deluxe-edge,
+.btn-group > :not(.btn-check) + .btn-deluxe > .btn-deluxe-front,
+.btn-group > :not(.btn-check) + .btn-deluxe-switchable > .btn-deluxe-front,
+.btn-group > :not(.btn-check) + .btn-deluxe > .btn-deluxe-edge,
+.btn-group > :not(.btn-check) + .btn-deluxe-switchable > .btn-deluxe-edge,
+.btn-group > .btn-group:not(:first-child) > .btn-deluxe > .btn-deluxe-front,
+.btn-group
+  > .btn-group:not(:first-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-front,
+.btn-group > .btn-group:not(:first-child) > .btn-deluxe > .btn-deluxe-edge,
+.btn-group
+  > .btn-group:not(:first-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-edge {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn-group
+  > .btn-deluxe:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-edge,
+.btn-group
+  > .btn-deluxe-switchable:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-edge,
+.btn-group > .btn-group:not(:last-child) > .btn-deluxe > .btn-deluxe-edge,
+.btn-group
+  > .btn-group:not(:last-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-edge {
+  background: linear-gradient(
+    to left,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 1.5)
+      )
+      0%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 1.5)
+      )
+      92%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 2)
+      )
+      100%
+  );
+}
+.btn-group > .btn-deluxe:not(:first-child):not(:last-child) > .btn-deluxe-edge,
+.btn-group
+  > .btn-deluxe-switchable:not(:first-child):not(:last-child)
+  > .btn-deluxe-edge {
+  background: hsl(
+    var(--but-deluxe-hue, 216deg),
+    var(--but-deluxe-sat, 100%),
+    calc(var(--but-deluxe-bri, 47%) / 1.5)
+  );
+}
+.btn-group > .btn-deluxe:nth-child(n + 3) > .btn-deluxe-edge,
+.btn-group > .btn-deluxe-switchable:nth-child(n + 3) > .btn-deluxe-edge,
+.btn-group > :not(.btn-check) + .btn-deluxe > .btn-deluxe-edge,
+.btn-group > :not(.btn-check) + .btn-deluxe-switchable > .btn-deluxe-edge,
+.btn-group > .btn-group:not(:first-child) > .btn-deluxe > .btn-deluxe-edge,
+.btn-group
+  > .btn-group:not(:first-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-edge {
+  background: linear-gradient(
+    to left,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 2)
+      )
+      0%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 1.5)
+      )
+      8%,
+    hsl(
+        var(--but-deluxe-hue, 216deg),
+        var(--but-deluxe-sat, 100%),
+        calc(var(--but-deluxe-bri, 47%) / 1.5)
+      )
+      100%
+  );
+}
+
+.btn-group-vertical
+  > .btn-deluxe:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-deluxe-switchable:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-deluxe:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-edge,
+.btn-group-vertical
+  > .btn-deluxe-switchable:not(:last-child):not(.dropdown-toggle)
+  > .btn-deluxe-edge,
+.btn-group-vertical
+  > .btn-group:not(:last-child)
+  > .btn-deluxe
+  > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-group:not(:last-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-group:not(:last-child)
+  > .btn-deluxe
+  > .btn-deluxe-edge,
+.btn-group-vertical
+  > .btn-group:not(:last-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-edge {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn-group-vertical > .btn-deluxe ~ .btn-deluxe > .btn-deluxe-front,
+.btn-group-vertical > .btn-deluxe-switchable ~ .btn-deluxe > .btn-deluxe-front,
+.btn-group-vertical > .btn-deluxe ~ .btn-deluxe-switchable > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-deluxe-switchable
+  ~ .btn-deluxe-switchable
+  > .btn-deluxe-front,
+.btn-group-vertical > .btn-deluxe ~ .btn-deluxe > .btn-deluxe-edge,
+.btn-group-vertical > .btn-deluxe-switchable ~ .btn-deluxe > .btn-deluxe-edge,
+.btn-group-vertical > .btn-deluxe ~ .btn-deluxe-switchable > .btn-deluxe-edge,
+.btn-group-vertical
+  > .btn-deluxe-switchable
+  ~ .btn-deluxe-switchable
+  > .btn-deluxe-edge,
+.btn-group-vertical
+  > .btn-group:not(:first-child)
+  > .btn-deluxe
+  > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-group:not(:first-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-front,
+.btn-group-vertical
+  > .btn-group:not(:first-child)
+  > .btn-deluxe
+  > .btn-deluxe-edge,
+.btn-group-vertical
+  > .btn-group:not(:first-child)
+  > .btn-deluxe-switchable
+  > .btn-deluxe-edge {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn-group-vertical > .btn-deluxe,
+.btn-group-vertical > .btn-deluxe-switchable {
+  margin-bottom: 0;
+  z-index: 1;
+}
+.btn-group-vertical > .btn-deluxe ~ .btn-deluxe,
+.btn-group-vertical > .btn-deluxe-switchable ~ .btn-deluxe,
+.btn-group-vertical > .btn-deluxe ~ .btn-deluxe-switchable,
+.btn-group-vertical > .btn-deluxe-switchable ~ .btn-deluxe-switchable {
+  margin-top: calc(0px - (3px + var(--btn-deluxe-up)));
+}
+
+.btn.btn-deluxe,
+.btn.btn-deluxe-switchable {
+  /* states */
+}
+.btn.btn-deluxe[class*='btn-outline-'] > .btn-deluxe-front,
+.btn[class*='btn-outline-'].btn-deluxe-switchable > .btn-deluxe-front {
+  background: transparent;
+  background-image: none;
+  transition: transform var(--btn-deluxe-trans-duration),
+    background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  border: 1px solid
+    hsl(
+      var(--but-deluxe-hue, 216deg),
+      var(--but-deluxe-sat, 100%),
+      var(--but-deluxe-bri, 47%)
+    );
+  color: hsl(
+    var(--but-deluxe-hue, 216deg),
+    var(--but-deluxe-sat, 100%),
+    var(--but-deluxe-bri, 47%)
+  );
+}
+.btn.btn-deluxe[class*='btn-outline-'] > .btn-deluxe-edge,
+.btn[class*='btn-outline-'].btn-deluxe-switchable > .btn-deluxe-edge {
+  background: hsl(var(--but-deluxe-hue, 216deg), 0%, 100%, 0%) !important;
+  border: 1px solid
+    hsl(
+      var(--but-deluxe-hue, 216deg),
+      var(--but-deluxe-sat, 100%),
+      var(--but-deluxe-bri, 47%)
+    );
+  border-top: 0 none;
+  margin-top: 0;
+  max-height: 50%;
+  position: absolute;
+  top: 50%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn.btn-deluxe[class*='btn-outline-']:hover > .btn-deluxe-front,
+.btn[class*='btn-outline-'].btn-deluxe-switchable:hover > .btn-deluxe-front,
+.btn.btn-deluxe[class*='btn-outline-'].active > .btn-deluxe-front,
+.btn[class*='btn-outline-'].active.btn-deluxe-switchable > .btn-deluxe-front {
+  color: var(--but-deluxe-txt, white);
+  transition: transform var(--btn-deluxe-trans-duration),
+    background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  background-color: hsl(
+    var(--but-deluxe-hue, 216deg),
+    var(--but-deluxe-sat, 100%),
+    var(--but-deluxe-bri, 47%)
+  );
+}
+@media all and (hover: hover) {
+  .btn.btn-deluxe[class*='btn-outline-']:hover > .btn-deluxe-front,
+  .btn[class*='btn-outline-'].btn-deluxe-switchable:hover > .btn-deluxe-front {
+    transition: transform var(--btn-deluxe-trans-duration),
+      background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  }
+}
+@media not all and (hover: hover) {
+  .btn.btn-deluxe[class*='btn-outline-']:hover > .btn-deluxe-front,
+  .btn[class*='btn-outline-'].btn-deluxe-switchable:hover > .btn-deluxe-front {
+    color: var(--but-deluxe-txt, white);
+    background: hsl(
+      var(--but-deluxe-hue, 216deg),
+      var(--but-deluxe-sat, 100%),
+      var(--but-deluxe-bri, 47%)
+    );
+  }
+}
+/*# sourceMappingURL=btn-deluxe-bs-v3.css.map */
+.ribbon {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px;
+  height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79a70a;
+  background: linear-gradient(#b6bac9 0%, #808080 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px;
+  right: -21px;
+}
+.ribbon span::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 3px solid #808080;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #808080;
+}
+.ribbon span::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #808080;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #808080;
+}
+/* ========================================================================== */
+/* heart button  */
+.heart,
+.heart-button {
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.heart .heart-flip,
+.heart-button .heart-flip {
+  --base: 12px;
+  --duration: 0.6s;
+  --active: #ededff;
+  /* --active: #ea4673; */
+  --inactive: #ededff4d;
+  width: var(--base);
+  height: calc(var(--base) + var(--base) / 2);
+  border-radius: calc(var(--base) / 2) calc(var(--base) / 2) 0 0;
+  position: relative;
+  transform-origin: 50% 66.66%;
+  transform-style: preserve-3d;
+  transform: rotate(var(--rotate, -45deg));
+  transition: background var(--duration), transform var(--duration) ease;
+  background: var(--heart-background, var(--inactive));
+}
+.heart .heart-flip:before,
+.heart-button .heart-flip:before,
+.heart .heart-flip:after,
+.heart-button .heart-flip:after {
+  content: '';
+  width: calc(var(--base) / 2);
+  height: var(--base);
+  border-radius: var(
+    --pseudo-border-radius,
+    calc(var(--base) / 2) 0 0 calc(var(--base) / 2)
+  );
+  position: absolute;
+  left: var(--pseudo-left, -50%);
+  transform-origin: var(--pseudo-origin, 100%) 50%;
+  bottom: 0;
+  background: var(--heart-background, var(--inactive));
+  filter: brightness(var(--pseudo-filter, 50%));
+  transform: translateX(1%) rotateY(var(--pseudo-rotate, 90deg)) translateZ(0);
+  transition: background var(--duration), transform var(--duration) ease,
+    filter var(--duration);
+}
+.heart .heart-flip:after,
+.heart-button .heart-flip:after {
+  --pseudo-border-radius: 0 calc(var(--base) / 2) calc(var(--base) / 2) 0;
+  --pseudo-left: 100%;
+  --pseudo-origin: 0;
+  filter: brightness(var(--pseudo-filter-second, 100%));
+  transform: translateX(-1%) rotateY(var(--pseudo-rotate-second, 0deg))
+    translateZ(0);
+}
+.heart.active .heart-flip,
+.heart-button.active .heart-flip {
+  --rotate: 45deg;
+  --pseudo-filter: 100%;
+  --pseudo-filter-second: 50%;
+  --pseudo-rotate: 0deg;
+  --pseudo-rotate-second: 90deg;
+  --heart-background: var(--active);
+}
+.heart {
+  background: none;
+  border: none;
+  padding: 0;
+  transform: scale(var(--button-scale, 1)) translateZ(0);
+  transition: transform 0.2s;
+}
+.heart:active {
+  --button-scale: 0.95;
+}
+.heart-button {
+  --duration: 0.4s;
+  --color: #404660;
+  --color-hover: #2b3044;
+  --color-active: #ededff;
+  --border: #d1d6ee;
+  --border-hover: #bbc1e1;
+  --border-active: #ea4673;
+  --background: #ededff;
+  --background-active: #ea4673;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 7px;
+  color: var(--button-color, var(--color));
+  border: 1px solid var(--button-border, var(--border));
+  background: var(--button-background, var(--background));
+  transform: scale(var(--button-scale, 1)) translateZ(0);
+  transition: background var(--duration), border-color var(--duration),
+    color var(--duration), transform 0.2s;
+}
+.heart-button .heart-flip {
+  --base: 8px;
+  --active: #ededff;
+  --inactive: #bbc1e1;
+  display: inline-block;
+  vertical-align: top;
+  margin: 4px 6px 0 0;
+}
+.heart-button span {
+  display: inline-block;
+  vertical-align: top;
+}
+.heart-button > span {
+  transform: translateX(var(--text-x, 4px));
+  transition: transform var(--duration);
+}
+.heart-button > span span {
+  display: inline-block;
+  vertical-align: top;
+  opacity: var(--span-opacity, 0);
+  transform: translateX(var(--span-x, 4px));
+  transition: opacity var(--duration), transform var(--duration);
+}
+.heart-button:active {
+  --button-scale: 0.95;
+}
+.heart-button:hover {
+  --button-color: var(--color-hover);
+  --button-border: var(--border-hover);
+}
+.heart-button.active {
+  --text-x: 0;
+  --button-color: var(--color-active);
+  --button-border: var(--border-active);
+  --button-background: var(--background-active);
+  --span-opacity: 1;
+  --span-x: 0;
+}
+
+/* ========================================================================== */
+/* heart button  */
